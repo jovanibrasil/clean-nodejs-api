@@ -1,0 +1,36 @@
+{
+  "name": "clean-nodejs-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "lint-staged": {
+    "*.js": [
+      "standard"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "list-staged"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jovanibrasil/clean-nodejs-api.git"
+  },
+  "author": "Jovani Brasil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jovanibrasil/clean-nodejs-api/issues"
+  },
+  "homepage": "https://github.com/jovanibrasil/clean-nodejs-api#readme",
+  "devDependencies": {
+    "lint-staged": "^11.2.6",
+    "standard": "^16.0.4"
+  },
+  "dependencies": {
+    "husky": "^7.0.4"
+  }
+}
