@@ -1,0 +1,8 @@
+const ServerError = class ServerError extends Error {
+  constructor () {
+    super('ServerError')
+    this.name = 'ServerError'
+  }
+}
+
+module.exports = ServerError

@@ -1,0 +1,6 @@
+{
+    "*.js": [
+        "standard",
+        "npm run test:staged"
+    ]
+}
