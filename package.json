@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --noStackTrace --colors",
+    "test": "jest --colors",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
     "test:integration": "npm test -- --watch -c jest-integration-config.js",
     "test:staged": "npm test -- --passWithNoTests --findRelatedTests --silent",
@@ -34,6 +34,7 @@
     "jest": "^27.3.1"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "validator": "^13.7.0"
   }
 }
