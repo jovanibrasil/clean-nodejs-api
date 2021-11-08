@@ -2,7 +2,7 @@
 const LoadUserByEmailRepository = require('./load-user-by-email-repository')
 const { MissingParamError } = require('../../utils/errors')
 
-class UserModel {
+class UserModelSpy {
   async findOne ({ email }) {
     this.email = email
     return this.user
@@ -10,10 +10,10 @@ class UserModel {
 }
 
 const makeSut = () => {
-  const userModel = new UserModel()
-  userModel.user = null
-  const sut = new LoadUserByEmailRepository(userModel)
-  return { sut, userModel }
+  const userModelSpy = new UserModelSpy()
+  userModelSpy.user = null
+  const sut = new LoadUserByEmailRepository(userModelSpy)
+  return { sut, userModelSpy }
 }
 
 describe('LoadUserByEmail Repository', () => {
@@ -23,20 +23,20 @@ describe('LoadUserByEmail Repository', () => {
     expect(user).toBeNull()
   })
   test('Should return an user if user was found', async () => {
-    const { sut, userModel } = makeSut()
+    const { sut, userModelSpy } = makeSut()
     const fakeUser = {
       email: 'valid_email@mail.com',
       id: 1234,
       password: 'any_password'
     }
-    userModel.user = fakeUser
+    userModelSpy.user = fakeUser
     const user = await sut.load(fakeUser.email)
     expect(user).toEqual(fakeUser)
   })
   test('Should userModel receive the provided email', async () => {
-    const { sut, userModel } = makeSut()
+    const { sut, userModelSpy } = makeSut()
     await sut.load('valid_email@mail.com')
-    expect(userModel.email).toEqual('valid_email@mail.com')
+    expect(userModelSpy.email).toEqual('valid_email@mail.com')
   })
   test('Should throw if no email is provided', async () => {
     const { sut } = makeSut()
