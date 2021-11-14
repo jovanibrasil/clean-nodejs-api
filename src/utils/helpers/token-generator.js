@@ -6,11 +6,11 @@ module.exports = class TokenGenerator {
     this.secret = secret
   }
 
-  async generate (value) {
-    if (!value) {
+  async generate (id) {
+    if (!id) {
       throw new MissingParamError('value')
     }
 
-    return jwt.sign(value, this.secret)
+    return jwt.sign({ _id: id }, this.secret)
   }
 }

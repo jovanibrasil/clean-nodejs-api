@@ -2,14 +2,14 @@
   "name": "clean-nodejs-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/main/index.js",
   "scripts": {
+    "start": "node src/main/index.js",
     "test": "jest --colors",
-    "test:unit": "npm test -- --watch -c jest-unit-config.js",
-    "test:integration": "npm test -- --watch -c jest-integration-config.js",
+    "test:unit": "npm test -- --detectOpenHandles --watch -c jest-unit-config.js",
+    "test:integration": "npm test -- -c jest-integration-config.js",
     "test:staged": "npm test -- --passWithNoTests --findRelatedTests --silent",
     "test:ci": "npm test -- --coverage",
-    "start": "node login.js",
     "prepare": "husky install"
   },
   "standard": {
@@ -28,10 +28,11 @@
   },
   "homepage": "https://github.com/jovanibrasil/clean-nodejs-api#readme",
   "devDependencies": {
+    "husky": "^7.0.0",
+    "jest": "^27.3.1",
     "lint-staged": "^11.2.6",
     "standard": "^16.0.4",
-    "husky": "^7.0.0",
-    "jest": "^27.3.1"
+    "supertest": "^6.1.6"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
